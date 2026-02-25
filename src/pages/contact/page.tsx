@@ -108,22 +108,12 @@ export default function ContactPage() {
       <footer className="bg-[#0B1F3B] py-10">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img
-              src="https://public.readdy.ai/ai/img_res/36c4f334-3c41-4aab-914a-d6196bb4adcf.png"
-              alt="Dentest Logo"
-              className="h-8 w-8 object-contain brightness-0 invert"
-            />
+            
             <span className="text-white font-bold">Dentest</span>
           </div>
           <p className="text-white/60 text-sm">&copy; 2025 Dentest. All rights reserved.</p>
-          <a
-            href="https://readdy.ai/?ref=logo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/60 text-sm hover:text-[#A7F3D0] transition-colors cursor-pointer"
-          >
-            Powered by Readdy
-          </a>
+       
+          
         </div>
       </footer>
     </div>

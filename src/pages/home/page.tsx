@@ -417,9 +417,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            <a href="https://readdy.ai/?ref=logo" target="_blank" rel="noopener noreferrer" className="text-white text-sm hover:text-[#A7F3D0] transition-colors duration-200 cursor-pointer">
-              Powered by Readdy
-            </a>
+          
           </div>
         </div>
       </footer>

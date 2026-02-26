@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 import { serviceCategories } from '../../../../mocks/services';
 
 interface AddServiceModalProps {
@@ -45,28 +46,8 @@ export function AddServiceModal({ service, onClose, onSubmit }: AddServiceModalP
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[#E5E7EB] p-6 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-[#0B1F3B]">
-              {service ? 'Edit Service' : 'Add New Service'}
-            </h2>
-            <p className="text-sm text-[#6B7280] mt-1">
-              {service ? 'Update service information' : 'Add a new service to your catalog'}
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-[#F7FAFC] rounded-lg transition-colors duration-200 cursor-pointer"
-          >
-            <i className="ri-close-line text-2xl text-[#6B7280]" />
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title={service ? 'Edit Service' : 'Add New Service'} size="md">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Service Name */}
           <div>
             <label className="block text-sm font-semibold text-[#0B1F3B] mb-2">
@@ -202,7 +183,6 @@ export function AddServiceModal({ service, onClose, onSubmit }: AddServiceModalP
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

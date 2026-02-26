@@ -79,27 +79,29 @@ export default function StepDate({ selectedDate, onSelect }: StepDateProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">Choose Appointment Date</h2>
-      <p className="text-[#6B7280] mb-8">Select your preferred date from available slots</p>
+      <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">Choose Appointment Date</h2>
+      <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">Select your preferred date from available slots</p>
 
-      <div className="max-w-md mx-auto bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-sm">
+      <div className="max-w-md mx-auto bg-white rounded-2xl border border-[#E5E7EB] p-4 sm:p-6 shadow-sm">
         {/* Month Navigation */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-5 sm:mb-6">
           <button
+            type="button"
             onClick={prevMonth}
             disabled={!canGoPrev}
-            className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer ${
-              canGoPrev ? 'text-[#0F766E] hover:bg-[#F0FDF9]' : 'text-[#D1D5DB] cursor-not-allowed'
+            className={`min-h-[44px] min-w-[44px] rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer ${
+              canGoPrev ? 'text-[#0F766E] hover:bg-[#F0FDF9] active:bg-[#E6F9F5]' : 'text-[#D1D5DB] cursor-not-allowed'
             }`}
           >
             <i className="ri-arrow-left-s-line text-xl"></i>
           </button>
-          <h3 className="text-lg font-semibold text-[#0B1F3B]">
+          <h3 className="text-base sm:text-lg font-semibold text-[#0B1F3B] text-center">
             {monthNames[currentMonth]} {currentYear}
           </h3>
           <button
+            type="button"
             onClick={nextMonth}
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-[#0F766E] hover:bg-[#F0FDF9] transition-all duration-200 cursor-pointer"
+            className="min-h-[44px] min-w-[44px] rounded-xl flex items-center justify-center text-[#0F766E] hover:bg-[#F0FDF9] active:bg-[#E6F9F5] transition-all duration-200 cursor-pointer"
           >
             <i className="ri-arrow-right-s-line text-xl"></i>
           </button>
@@ -114,15 +116,16 @@ export default function StepDate({ selectedDate, onSelect }: StepDateProps) {
           ))}
         </div>
 
-        {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-1">
+        {/* Calendar Grid - touch-friendly cell size on mobile */}
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
           {calendarDays.map((day, idx) => (
-            <div key={idx} className="aspect-square flex items-center justify-center">
+            <div key={idx} className="aspect-square flex items-center justify-center min-w-0">
               {day !== null ? (
                 <button
+                  type="button"
                   onClick={() => handleSelect(day)}
                   disabled={isPast(day) || isSunday(day)}
-                  className={`w-full h-full rounded-lg text-sm font-medium transition-all duration-200 flex items-center justify-center ${
+                  className={`w-full h-full min-h-[40px] rounded-lg text-sm font-medium transition-all duration-200 flex items-center justify-center ${
                     isSelected(day)
                       ? 'bg-[#0F766E] text-white shadow-md'
                       : isToday(day)
@@ -140,7 +143,7 @@ export default function StepDate({ selectedDate, onSelect }: StepDateProps) {
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-4 mt-6 pt-4 border-t border-[#E5E7EB]">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-5 sm:mt-6 pt-4 border-t border-[#E5E7EB]">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-sm bg-[#0F766E]"></div>
             <span className="text-xs text-[#6B7280]">Selected</span>

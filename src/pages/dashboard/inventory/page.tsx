@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
+import { useToast } from '@/contexts/ToastContext';
 import { inventoryItems as mockItems, inventoryCategories } from '../../../mocks/inventory';
 
 export default function InventoryPage() {
@@ -12,15 +11,10 @@ export default function InventoryPage() {
   const [editingItem, setEditingItem] = useState<any>(null);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [restockQty, setRestockQty] = useState('');
-  const [toast, setToast] = useState('');
+  const { showToast } = useToast();
   const [formData, setFormData] = useState({
     name: '', category: 'PPE', stockLevel: '', minThreshold: '', supplier: '', unitPrice: ''
   });
-
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
-  };
 
   const lowStockCount = items.filter(i => i.stockLevel <= i.minThreshold).length;
 
@@ -95,15 +89,8 @@ export default function InventoryPage() {
   };
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 sm:p-6 lg:p-8">
-        {/* Toast */}
-        {toast && (
-          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#0B1F3B] text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg">
-            <i className="ri-check-line mr-2"></i>{toast}
-          </div>
-        )}
-
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
@@ -399,6 +386,6 @@ export default function InventoryPage() {
           </div>
         )}
       </div>
-    </DashboardLayout>
+    </>
   );
 }

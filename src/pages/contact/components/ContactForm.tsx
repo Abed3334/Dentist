@@ -1,7 +1,8 @@
 
 import { useState, useRef } from 'react';
 
-const FORM_URL = 'https://readdy.ai/api/form/d6a7fsma728k8ctu34hg';
+/** Placeholder: replace with your form endpoint (e.g. /api/contact) */
+const FORM_URL = '#';
 
 const subjects = [
   'General Inquiry',
@@ -57,18 +58,20 @@ export default function ContactForm() {
     if (!validate()) return;
     setLoading(true);
     try {
-      const body = new URLSearchParams();
-      body.append('fullName', fullName.trim());
-      body.append('email', email.trim());
-      body.append('phone', phone.trim());
-      body.append('subject', subject);
-      body.append('message', message.trim());
-      body.append('agree', 'Yes');
-      await fetch(FORM_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
-      });
+      if (FORM_URL !== '#') {
+        const body = new URLSearchParams();
+        body.append('fullName', fullName.trim());
+        body.append('email', email.trim());
+        body.append('phone', phone.trim());
+        body.append('subject', subject);
+        body.append('message', message.trim());
+        body.append('agree', 'Yes');
+        await fetch(FORM_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString(),
+        });
+      }
       setSuccess(true);
       setFullName('');
       setEmail('');
@@ -91,10 +94,10 @@ export default function ContactForm() {
   const normalBorder = 'border-[#E5E7EB]';
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB]/60 p-8 md:p-10 hover:shadow-md transition-shadow duration-300">
+    <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB]/60 p-6 sm:p-8 md:p-10 hover:shadow-md transition-shadow duration-300">
       {/* Success Toast */}
       {success && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 bg-[#A7F3D0] rounded-xl shadow-xl animate-bounce-in">
+        <div className="fixed top-20 sm:top-6 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-[100] flex items-center gap-3 px-4 sm:px-6 py-4 bg-[#A7F3D0] rounded-xl shadow-xl animate-bounce-in">
           <div className="w-8 h-8 rounded-full bg-[#0F766E] flex items-center justify-center">
             <i className="ri-check-line text-white text-lg" />
           </div>
@@ -102,13 +105,12 @@ export default function ContactForm() {
         </div>
       )}
 
-      <h2 className="text-2xl font-bold text-[#0B1F3B] mb-1">Get in Touch</h2>
-      <p className="text-sm text-[#6B7280] mb-8">Fill out the form and our team will respond within 24 hours.</p>
+      <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1">Get in Touch</h2>
+      <p className="text-sm text-[#6B7280] mb-6 sm:mb-8">Fill out the form and our team will respond within 24 hours.</p>
 
       <form
         ref={formRef}
-        id="dentest-contact-form"
-        data-readdy-form
+        id="dentist-contact-form"
         onSubmit={handleSubmit}
         noValidate
         className="space-y-5"
@@ -224,7 +226,7 @@ export default function ContactForm() {
               className="mt-0.5 w-5 h-5 rounded border-[#E5E7EB] text-[#0F766E] focus:ring-[#0F766E]/20 cursor-pointer accent-[#0F766E]"
             />
             <span className="text-sm text-[#6B7280] group-hover:text-[#111827] transition-colors">
-              I agree to be contacted by Dentest regarding my inquiry <span className="text-red-500">*</span>
+              I agree to be contacted by Dentist regarding my inquiry <span className="text-red-500">*</span>
             </span>
           </label>
           {errors?.agree && <p className="text-red-500 text-xs mt-1 ml-8">{errors.agree}</p>}
@@ -234,7 +236,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full md:w-auto px-8 py-3.5 bg-[#0F766E] text-white rounded-lg font-medium text-sm hover:bg-[#0B5B54] hover:shadow-lg active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
+          className="w-full md:w-auto min-h-[48px] px-8 py-3.5 bg-[#0F766E] text-white rounded-lg font-medium text-sm hover:bg-[#0B5B54] hover:shadow-lg active:scale-[0.98] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
         >
           {loading ? (
             <>

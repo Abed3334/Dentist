@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
 import { PatientTable } from './components/PatientTable';
 import { AddPatientModal } from './components/AddPatientModal';
 import { PatientDrawer } from './components/PatientDrawer';
 import { DeleteConfirmModal } from './components/DeleteConfirmModal';
-import DashboardLayout from '../components/DashboardLayout';
+import { TableSkeleton } from '@/components/ui/Loading/TableSkeleton';
+import { EmptyState } from '@/components/ui/EmptyState';
 import { patients as mockPatients } from '../../../mocks/patients';
 
 export default function PatientsPage() {
@@ -19,6 +19,7 @@ export default function PatientsPage() {
   const [selectedPatient, setSelectedPatient] = useState<any>(null);
   const [showDrawer, setShowDrawer] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [loading] = useState(false);
 
   const itemsPerPage = 10;
 
@@ -107,17 +108,18 @@ export default function PatientsPage() {
 
   // ---------- Render ----------
   return (
-    <DashboardLayout>
-      <div className="p-8">
+    <>
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-[#0B1F3B] mb-2">Patients</h1>
-            <p className="text-[#6B7280]">Manage patient records and information</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-navy mb-2">Patients</h1>
+            <p className="text-muted text-sm sm:text-base">Manage patient records and information</p>
           </div>
           <button
+            type="button"
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-[#0F766E] text-white rounded-xl hover:bg-[#0B5B54] transition-all duration-200 whitespace-nowrap cursor-pointer"
+            className="flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-primary text-white rounded-xl hover:bg-primary-dark transition-all duration-200 whitespace-nowrap cursor-pointer w-full sm:w-auto min-h-[44px]"
           >
             <i className="ri-user-add-line text-xl" />
             <span className="font-medium">Add Patient</span>
@@ -125,7 +127,7 @@ export default function PatientsPage() {
         </div>
 
         {/* Controls */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-6 mb-6">
+        <div className="bg-card rounded-2xl shadow-sm border border-border p-4 sm:p-6 mb-6">
           <div className="flex flex-wrap items-center gap-4">
             {/* Search */}
             <div className="flex-1 min-w-[280px]">
@@ -185,54 +187,79 @@ export default function PatientsPage() {
         </div>
 
         {/* Table */}
-        <PatientTable
-          patients={paginatedPatients}
-          onRowClick={handleRowClick}
-          onEdit={patient => {
-            setSelectedPatient(patient);
-            setShowEditModal(true);
-          }}
-          onDelete={patient => {
-            setSelectedPatient(patient);
-            setShowDeleteModal(true);
-          }}
-        />
+        {loading ? (
+          <div className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
+            <TableSkeleton rows={8} columns={6} />
+          </div>
+        ) : filteredPatients.length === 0 ? (
+          <div className="bg-card rounded-2xl shadow-sm border border-border">
+            <EmptyState
+              title="No patients yet"
+              description="Add your first patient to get started."
+              icon={<i className="ri-user-line" />}
+              action={
+                <button
+                  type="button"
+                  onClick={() => setShowAddModal(true)}
+                  className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary-dark transition-all duration-200 whitespace-nowrap cursor-pointer"
+                >
+                  <i className="ri-user-add-line text-xl" />
+                  <span className="font-medium">Add Patient</span>
+                </button>
+              }
+            />
+          </div>
+        ) : (
+          <PatientTable
+            patients={paginatedPatients}
+            onRowClick={handleRowClick}
+            onEdit={patient => {
+              setSelectedPatient(patient);
+              setShowEditModal(true);
+            }}
+            onDelete={patient => {
+              setSelectedPatient(patient);
+              setShowDeleteModal(true);
+            }}
+          />
+        )}
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between mt-6">
-            <p className="text-sm text-[#6B7280]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-6">
+            <p className="text-sm text-muted text-center sm:text-left order-2 sm:order-1">
               Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
               {Math.min(currentPage * itemsPerPage, filteredPatients.length)} of{' '}
               {filteredPatients.length} patients
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 order-1 sm:order-2">
               <button
+                type="button"
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 border-2 border-[#E5E7EB] rounded-lg hover:border-[#0F766E] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 cursor-pointer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-2 border-2 border-border rounded-lg hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 cursor-pointer"
               >
                 <i className="ri-arrow-left-s-line" />
               </button>
-
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                 <button
                   key={page}
+                  type="button"
                   onClick={() => setCurrentPage(page)}
-                  className={`px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
+                  className={`min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
                     currentPage === page
-                      ? 'bg-[#0F766E] text-white'
-                      : 'border-2 border-[#E5E7EB] hover:border-[#0F766E]'
+                      ? 'bg-primary text-white'
+                      : 'border-2 border-border hover:border-primary'
                   }`}
                 >
                   {page}
                 </button>
               ))}
-
               <button
+                type="button"
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 border-2 border-[#E5E7EB] rounded-lg hover:border-[#0F766E] disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 cursor-pointer"
+                className="min-h-[44px] min-w-[44px] flex items-center justify-center px-4 py-2 border-2 border-border rounded-lg hover:border-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 cursor-pointer"
               >
                 <i className="ri-arrow-right-s-line" />
               </button>
@@ -277,6 +304,6 @@ export default function PatientsPage() {
           }}
         />
       )}
-    </DashboardLayout>
+    </>
   );
 }

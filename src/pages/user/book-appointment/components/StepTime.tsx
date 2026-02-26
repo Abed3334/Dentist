@@ -28,7 +28,7 @@ export default function StepTime({ selectedTime, onSelect, selectedDate }: StepT
       });
       setAvailableSlots(available);
       setLoading(false);
-    }, 800);
+    }, 400);
     return () => clearTimeout(timer);
   }, [selectedDate]);
 
@@ -41,14 +41,14 @@ export default function StepTime({ selectedTime, onSelect, selectedDate }: StepT
   if (loading) {
     return (
       <div>
-        <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">Choose Appointment Time</h2>
-        <p className="text-[#6B7280] mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">Choose Appointment Time</h2>
+        <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">
           Available time slots for{' '}
           <span className="text-[#0F766E] font-medium">{formatDate(selectedDate)}</span>
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
           {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="h-12 rounded-lg bg-[#F3F4F6] animate-pulse"></div>
+            <div key={i} className="h-12 sm:h-12 rounded-xl bg-[#F3F4F6] animate-pulse"></div>
           ))}
         </div>
       </div>
@@ -58,12 +58,12 @@ export default function StepTime({ selectedTime, onSelect, selectedDate }: StepT
   if (availableSlots.length === 0) {
     return (
       <div>
-        <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">Choose Appointment Time</h2>
-        <p className="text-[#6B7280] mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">Choose Appointment Time</h2>
+        <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">
           Available time slots for{' '}
           <span className="text-[#0F766E] font-medium">{formatDate(selectedDate)}</span>
         </p>
-        <div className="text-center py-16">
+        <div className="text-center py-12 sm:py-16">
           <div className="w-20 h-20 rounded-full bg-[#FEF3C7] flex items-center justify-center mx-auto mb-4">
             <i className="ri-calendar-close-line text-3xl text-[#D97706]"></i>
           </div>
@@ -78,36 +78,40 @@ export default function StepTime({ selectedTime, onSelect, selectedDate }: StepT
     );
   }
 
+  const slotBtnClass = (isAvailable: boolean, isActive: boolean) =>
+    `min-h-[48px] rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap flex items-center justify-center gap-1 ${
+      isActive
+        ? 'bg-[#0F766E] text-white shadow-md ring-2 ring-[#0F766E]/20'
+        : isAvailable
+        ? 'bg-white border-2 border-[#E5E7EB] text-[#111827] hover:border-[#0F766E] hover:text-[#0F766E] active:bg-[#F0FDF9] cursor-pointer'
+        : 'bg-[#F3F4F6] text-[#D1D5DB] line-through cursor-not-allowed border-2 border-transparent'
+    }`;
+
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">Choose Appointment Time</h2>
-      <p className="text-[#6B7280] mb-8">
+      <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">Choose Appointment Time</h2>
+      <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">
         Available time slots for{' '}
         <span className="text-[#0F766E] font-medium">{formatDate(selectedDate)}</span>
       </p>
 
       <div className="mb-6">
-        <h3 className="text-sm font-medium text-[#6B7280] mb-3 flex items-center gap-2">
+        <h3 className="text-sm font-medium text-[#6B7280] mb-2 sm:mb-3 flex items-center gap-2">
           <i className="ri-sun-line w-4 h-4 flex items-center justify-center"></i> Morning
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
           {allSlots.filter((s) => s.includes('AM')).map((slot) => {
             const isAvailable = availableSlots.includes(slot);
             const isActive = selectedTime === slot;
             return (
               <button
+                type="button"
                 key={slot}
                 onClick={() => isAvailable && onSelect(slot)}
                 disabled={!isAvailable}
-                className={`h-12 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                  isActive
-                    ? 'bg-[#0F766E] text-white shadow-md'
-                    : isAvailable
-                    ? 'bg-white border border-[#E5E7EB] text-[#111827] hover:border-[#0F766E] hover:text-[#0F766E] cursor-pointer'
-                    : 'bg-[#F3F4F6] text-[#D1D5DB] line-through cursor-not-allowed'
-                }`}
+                className={slotBtnClass(isAvailable, isActive)}
               >
-                {isActive && <i className="ri-check-line mr-1"></i>}
+                {isActive && <i className="ri-check-line"></i>}
                 {slot}
               </button>
             );
@@ -116,27 +120,22 @@ export default function StepTime({ selectedTime, onSelect, selectedDate }: StepT
       </div>
 
       <div>
-        <h3 className="text-sm font-medium text-[#6B7280] mb-3 flex items-center gap-2">
+        <h3 className="text-sm font-medium text-[#6B7280] mb-2 sm:mb-3 flex items-center gap-2">
           <i className="ri-moon-line w-4 h-4 flex items-center justify-center"></i> Afternoon
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
           {allSlots.filter((s) => s.includes('PM')).map((slot) => {
             const isAvailable = availableSlots.includes(slot);
             const isActive = selectedTime === slot;
             return (
               <button
+                type="button"
                 key={slot}
                 onClick={() => isAvailable && onSelect(slot)}
                 disabled={!isAvailable}
-                className={`h-12 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                  isActive
-                    ? 'bg-[#0F766E] text-white shadow-md'
-                    : isAvailable
-                    ? 'bg-white border border-[#E5E7EB] text-[#111827] hover:border-[#0F766E] hover:text-[#0F766E] cursor-pointer'
-                    : 'bg-[#F3F4F6] text-[#D1D5DB] line-through cursor-not-allowed'
-                }`}
+                className={slotBtnClass(isAvailable, isActive)}
               >
-                {isActive && <i className="ri-check-line mr-1"></i>}
+                {isActive && <i className="ri-check-line"></i>}
                 {slot}
               </button>
             );

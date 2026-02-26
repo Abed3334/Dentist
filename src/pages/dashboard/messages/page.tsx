@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
 import ConversationList from './components/ConversationList';
 import ChatView from './components/ChatView';
 import { conversations as mockConversations } from '../../../mocks/messages';
@@ -67,7 +66,7 @@ export default function MessagesPage() {
   const totalUnread = conversations.reduce((sum, c) => sum + c.unread, 0);
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 sm:p-6 lg:p-8 h-[calc(100vh-73px)]">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
@@ -124,6 +123,6 @@ export default function MessagesPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

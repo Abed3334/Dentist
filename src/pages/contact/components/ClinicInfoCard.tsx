@@ -14,8 +14,8 @@ const infoRows = [
   {
     icon: 'ri-mail-line',
     label: 'Email',
-    lines: ['hello@dentest.com'],
-    href: 'mailto:hello@dentest.com',
+    lines: ['hello@dentist.com'],
+    href: 'mailto:hello@dentist.com',
   },
   {
     icon: 'ri-time-line',
@@ -34,8 +34,8 @@ export default function ClinicInfoCard() {
   return (
     <div className="space-y-6">
       {/* Info Card */}
-      <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB]/60 p-8 md:p-10 hover:shadow-md transition-shadow duration-300">
-        <h2 className="text-2xl font-bold text-[#0B1F3B] mb-6">Visit Our Clinic</h2>
+      <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB]/60 p-6 sm:p-8 md:p-10 hover:shadow-md transition-shadow duration-300">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-5 sm:mb-6">Visit Our Clinic</h2>
 
         <div className="space-y-5">
           {infoRows.map((row) => (
@@ -85,7 +85,7 @@ export default function ClinicInfoCard() {
       <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB]/60 overflow-hidden hover:shadow-md transition-shadow duration-300">
         <div className="w-full h-[260px]">
           <iframe
-            title="Dentest Clinic Location"
+            title="Dentist Clinic Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076794379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
             className="w-full h-full border-0"
             allowFullScreen
@@ -93,16 +93,16 @@ export default function ClinicInfoCard() {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-        <div className="px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sm text-[#6B7280]">
-            <i className="ri-map-pin-line w-4 h-4 flex items-center justify-center text-[#0F766E]" />
-            123 Dental Street, New York
+        <div className="px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+          <div className="flex items-center gap-2 text-sm text-[#6B7280] min-w-0">
+            <i className="ri-map-pin-line w-4 h-4 flex items-center justify-center text-[#0F766E] shrink-0" />
+            <span className="truncate">123 Dental Street, New York</span>
           </div>
           <a
             href="https://maps.google.com"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="text-sm text-[#0F766E] font-medium hover:underline cursor-pointer whitespace-nowrap"
+            className="text-sm text-[#0F766E] font-medium hover:underline cursor-pointer whitespace-nowrap flex items-center gap-1 min-h-[44px] sm:min-h-0 justify-center sm:justify-end"
           >
             Get Directions <i className="ri-external-link-line" />
           </a>

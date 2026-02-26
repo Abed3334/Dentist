@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
-import UserLayout from '../components/UserLayout';
+import UserLayout from '@/layouts/UserLayout';
+import { useToast } from '@/contexts/ToastContext';
 
 const initialProfile = {
   name: 'Sarah Johnson',
@@ -20,13 +20,8 @@ const initialProfile = {
 export default function ProfilePage() {
   const [profile, setProfile] = useState(initialProfile);
   const [editing, setEditing] = useState<string | null>(null);
-  const [toast, setToast] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
-  };
+  const { showToast } = useToast();
 
   const handleSave = (section: string) => {
     const newErrors: Record<string, string> = {};
@@ -88,15 +83,15 @@ export default function ProfilePage() {
   return (
     <UserLayout>
       <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-[#0B1F3B]">My Profile</h1>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-[#0B1F3B]">My Profile</h1>
           <p className="text-sm text-[#6B7280] mt-1">Manage your personal and medical information</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Personal Info */}
-          <div className="bg-white rounded-xl border border-[#E5E7EB] p-6">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-white rounded-xl border border-[#E5E7EB] p-4 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-5 sm:mb-6">
               <h2 className="text-base font-bold text-[#0B1F3B] flex items-center gap-2">
                 <i className="ri-user-line text-[#0F766E] w-5 h-5 flex items-center justify-center"></i>
                 Personal Information
@@ -133,7 +128,7 @@ export default function ProfilePage() {
             {/* Avatar */}
             <div className="flex items-center gap-4 mb-6 pb-6 border-b border-[#E5E7EB]">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20young%20woman%20with%20friendly%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=120&height=120&seq=patient-profile-1&orientation=squarish"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face"
                 alt="Profile"
                 className="w-16 h-16 rounded-full object-cover border-2 border-[#E5E7EB]"
               />
@@ -153,8 +148,8 @@ export default function ProfilePage() {
           </div>
 
           {/* Medical Info */}
-          <div className="bg-white rounded-xl border border-[#E5E7EB] p-6">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-white rounded-xl border border-[#E5E7EB] p-4 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-5 sm:mb-6">
               <h2 className="text-base font-bold text-[#0B1F3B] flex items-center gap-2">
                 <i className="ri-heart-pulse-line text-[#0F766E] w-5 h-5 flex items-center justify-center"></i>
                 Medical Information
@@ -281,12 +276,6 @@ export default function ProfilePage() {
       </div>
 
       {/* Toast */}
-      {toast && (
-        <div className="fixed bottom-6 right-6 bg-[#0B1F3B] text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm animate-slide-up z-50">
-          <i className="ri-check-double-line text-[#A7F3D0]"></i>
-          {toast}
-        </div>
-      )}
     </UserLayout>
   );
 }

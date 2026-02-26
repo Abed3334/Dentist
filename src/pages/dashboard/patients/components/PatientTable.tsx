@@ -63,7 +63,7 @@ export function PatientTable({
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[640px]">
           <thead className="bg-[#F7FAFC]">
             <tr>
               <th className="px-6 py-4 text-left text-xs font-semibold text-[#6B7280] uppercase tracking-wider whitespace-nowrap">
@@ -130,22 +130,26 @@ export function PatientTable({
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center gap-2">
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         safeOnEdit(patient);
                       }}
                       className="p-2 text-[#0F766E] hover:bg-[#F0FDF9] rounded-lg transition-all duration-200"
                       title="Edit"
+                      aria-label={`Edit ${patient.name}`}
                     >
                       <i className="ri-edit-line text-lg"></i>
                     </button>
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         safeOnDelete(patient);
                       }}
                       className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200"
                       title="Delete"
+                      aria-label={`Delete ${patient.name}`}
                     >
                       <i className="ri-delete-bin-line text-lg"></i>
                     </button>

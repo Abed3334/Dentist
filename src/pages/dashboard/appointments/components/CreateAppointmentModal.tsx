@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 import { patients, doctors, services } from '../../../../mocks/appointments';
 
 interface CreateAppointmentModalProps {
@@ -91,25 +92,10 @@ export function CreateAppointmentModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[#E5E7EB] p-6 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-[#0B1F3B]">Create Appointment</h2>
-            <p className="text-sm text-[#6B7280] mt-1">Schedule a new patient appointment</p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-[#F7FAFC] rounded-lg transition-colors duration-200 cursor-pointer"
-          >
-            <i className="ri-close-line text-2xl text-[#6B7280]" />
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Conflict Warning */}
+    <Modal open onClose={onClose} title="Create Appointment" size="md">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <p className="text-sm text-muted -mt-2">Schedule a new patient appointment</p>
+        {/* Conflict Warning */}
           {conflictWarning && (
             <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-xl flex items-start gap-3">
               <i className="ri-error-warning-line text-xl text-yellow-600 mt-0.5" />
@@ -263,7 +249,6 @@ export function CreateAppointmentModal({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

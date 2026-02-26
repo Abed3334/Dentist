@@ -60,7 +60,7 @@ export function AppointmentListView({
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[640px]">
           <thead className="bg-[#F7FAFC] border-b border-[#E5E7EB]">
             <tr>
               <th className="px-6 py-4 text-left text-sm font-semibold text-[#0B1F3B] whitespace-nowrap">
@@ -139,18 +139,22 @@ export function AppointmentListView({
                   <div className="flex items-center gap-2">
                     {apt.status === 'pending' && (
                       <button
+                        type="button"
                         onClick={() => onConfirm(apt.id)}
                         className="p-2 text-[#0F766E] hover:bg-[#A7F3D0] rounded-lg transition-colors duration-200 cursor-pointer"
                         title="Confirm"
+                        aria-label="Confirm appointment"
                       >
                         <i className="ri-check-line text-lg" />
                       </button>
                     )}
                     {apt.status === 'confirmed' && (
                       <button
+                        type="button"
                         onClick={() => onComplete(apt.id)}
                         className="p-2 text-green-600 hover:bg-green-100 rounded-lg transition-colors duration-200 cursor-pointer"
                         title="Complete"
+                        aria-label="Mark as complete"
                       >
                         <i className="ri-check-double-line text-lg" />
                       </button>
@@ -158,23 +162,29 @@ export function AppointmentListView({
                     {(apt.status === 'pending' || apt.status === 'confirmed') && (
                       <>
                         <button
+                          type="button"
                           onClick={() => onReschedule(apt)}
                           className="p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors duration-200 cursor-pointer"
                           title="Reschedule"
+                          aria-label="Reschedule"
                         >
                           <i className="ri-calendar-event-line text-lg" />
                         </button>
                         <button
+                          type="button"
                           onClick={() => onSendReminder(apt.id)}
                           className="p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors duration-200 cursor-pointer"
                           title="Send Reminder"
+                          aria-label="Send reminder"
                         >
                           <i className="ri-notification-line text-lg" />
                         </button>
                         <button
+                          type="button"
                           onClick={() => onCancel(apt)}
                           className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-200 cursor-pointer"
                           title="Cancel"
+                          aria-label="Cancel appointment"
                         >
                           <i className="ri-close-line text-lg" />
                         </button>

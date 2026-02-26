@@ -1,5 +1,5 @@
-
 import { useState, useRef, useEffect } from 'react';
+import { useToast } from '@/contexts/ToastContext';
 import { quickReplyTemplates, staffMembers } from '../../../../mocks/messages';
 
 interface Message {
@@ -34,7 +34,7 @@ export default function ChatView({ conversation, onBack, onMarkResolved, onAssig
   const [showTemplates, setShowTemplates] = useState(false);
   const [showAssignDropdown, setShowAssignDropdown] = useState(false);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
-  const [toast, setToast] = useState('');
+  const { showToast } = useToast();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,11 +57,6 @@ export default function ChatView({ conversation, onBack, onMarkResolved, onAssig
   const handleTemplateSelect = (text: string) => {
     setMessageText(text);
     setShowTemplates(false);
-  };
-
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
   };
 
   const formatMessageTime = (dateStr: string) => {
@@ -93,13 +88,6 @@ export default function ChatView({ conversation, onBack, onMarkResolved, onAssig
 
   return (
     <div className="flex flex-col h-full relative">
-      {/* Toast */}
-      {toast && (
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-50 bg-[#0B1F3B] text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg animate-fade-in">
-          <i className="ri-check-line mr-2"></i>{toast}
-        </div>
-      )}
-
       {/* Chat Header */}
       <div className="px-5 py-4 border-b border-[#E5E7EB] bg-white flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -172,8 +160,10 @@ export default function ChatView({ conversation, onBack, onMarkResolved, onAssig
           {/* More Menu */}
           <div className="relative">
             <button
+              type="button"
               onClick={() => { setShowMoreMenu(!showMoreMenu); setShowAssignDropdown(false); }}
               className="p-2 hover:bg-[#F3F4F6] rounded-lg transition-colors cursor-pointer"
+              aria-label="More options"
             >
               <i className="ri-more-2-fill text-lg text-[#6B7280]"></i>
             </button>

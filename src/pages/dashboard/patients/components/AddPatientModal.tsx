@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import type React from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface AddPatientModalProps {
   /** Existing patient data for edit mode (optional) */
@@ -106,24 +106,8 @@ export function AddPatientModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[#E5E7EB] px-6 py-4 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-[#0B1F3B]">
-            {patient ? 'Edit Patient' : 'Add New Patient'}
-          </h2>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-[#F7FAFC] rounded-lg transition-colors duration-200 cursor-pointer"
-            aria-label="Close modal"
-          >
-            <i className="ri-close-line text-2xl text-[#6B7280]" />
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6">
+    <Modal open onClose={onClose} title={patient ? 'Edit Patient' : 'Add New Patient'} size="md">
+      <form onSubmit={handleSubmit} className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Full Name */}
             <div className="md:col-span-2">
@@ -323,7 +307,6 @@ export function AddPatientModal({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

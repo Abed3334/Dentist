@@ -2,7 +2,7 @@
 export const conversations = [
   {
     id: 1,
-    patient: { id: 1, name: 'Sarah Johnson', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20young%20woman%20with%20friendly%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-1&orientation=squarish' },
+    patient: { id: 1, name: 'Sarah Johnson', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'Hi, I wanted to confirm my appointment for tomorrow at 9 AM.',
     lastMessageTime: '2025-01-15T14:30:00',
     unread: 2,
@@ -18,7 +18,7 @@ export const conversations = [
   },
   {
     id: 2,
-    patient: { id: 2, name: 'Michael Chen', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20young%20asian%20man%20with%20confident%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-2&orientation=squarish' },
+    patient: { id: 2, name: 'Michael Chen', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'Can I get a copy of my invoice from last visit?',
     lastMessageTime: '2025-01-15T12:15:00',
     unread: 1,
@@ -33,7 +33,7 @@ export const conversations = [
   },
   {
     id: 3,
-    patient: { id: 3, name: 'Emily Davis', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20young%20woman%20with%20warm%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-3&orientation=squarish' },
+    patient: { id: 3, name: 'Emily Davis', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'Thank you so much! The whitening results are amazing.',
     lastMessageTime: '2025-01-15T10:45:00',
     unread: 0,
@@ -48,7 +48,7 @@ export const conversations = [
   },
   {
     id: 4,
-    patient: { id: 4, name: 'James Wilson', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20middle%20aged%20man%20with%20friendly%20expression%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-4&orientation=squarish' },
+    patient: { id: 4, name: 'James Wilson', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'My braces wire broke. Can I come in today?',
     lastMessageTime: '2025-01-15T09:20:00',
     unread: 3,
@@ -63,7 +63,7 @@ export const conversations = [
   },
   {
     id: 5,
-    patient: { id: 5, name: 'Lisa Anderson', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20mature%20woman%20with%20confident%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-5&orientation=squarish' },
+    patient: { id: 5, name: 'Lisa Anderson', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'Does my insurance cover the root canal procedure?',
     lastMessageTime: '2025-01-14T16:30:00',
     unread: 0,
@@ -79,7 +79,7 @@ export const conversations = [
   },
   {
     id: 6,
-    patient: { id: 6, name: 'Robert Taylor', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20young%20man%20with%20casual%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-6&orientation=squarish' },
+    patient: { id: 6, name: 'Robert Taylor', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'I need to reschedule my appointment next week.',
     lastMessageTime: '2025-01-14T11:00:00',
     unread: 0,
@@ -96,7 +96,7 @@ export const conversations = [
   },
   {
     id: 7,
-    patient: { id: 7, name: 'Jennifer Martinez', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20hispanic%20woman%20with%20bright%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-7&orientation=squarish' },
+    patient: { id: 7, name: 'Jennifer Martinez', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'What are the post-care instructions for my filling?',
     lastMessageTime: '2025-01-13T15:45:00',
     unread: 0,
@@ -111,7 +111,7 @@ export const conversations = [
   },
   {
     id: 8,
-    patient: { id: 8, name: 'David Brown', avatar: 'https://readdy.ai/api/search-image?query=Professional%20headshot%20portrait%20of%20african%20american%20man%20with%20professional%20smile%2C%20clean%20white%20background%2C%20modern%20professional%20photo&width=80&height=80&seq=patient-8&orientation=squarish' },
+    patient: { id: 8, name: 'David Brown', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face' },
     lastMessage: 'Can I book a teeth whitening session for next month?',
     lastMessageTime: '2025-01-13T10:00:00',
     unread: 1,
@@ -129,7 +129,7 @@ export const quickReplyTemplates = [
   { id: 1, name: 'Appointment Confirmed', text: 'Your appointment has been confirmed. Please arrive 10 minutes early. If you need to reschedule, please let us know at least 24 hours in advance.' },
   { id: 2, name: 'Appointment Reminder', text: 'This is a friendly reminder about your upcoming appointment. Please remember to bring your insurance card and arrive 10 minutes early.' },
   { id: 3, name: 'Billing Info', text: 'Your invoice has been generated and sent to your email. If you have any questions about the charges, please do not hesitate to ask.' },
-  { id: 4, name: 'Post-Care Instructions', text: 'Thank you for visiting Dentest! Please follow the post-care instructions provided. If you experience any unusual symptoms, contact us immediately.' },
+  { id: 4, name: 'Post-Care Instructions', text: 'Thank you for visiting Dentist! Please follow the post-care instructions provided. If you experience any unusual symptoms, contact us immediately.' },
   { id: 5, name: 'Insurance Query', text: 'We have checked your insurance coverage. Your plan covers the procedure. We will send you a detailed breakdown of costs and coverage shortly.' },
   { id: 6, name: 'Reschedule Confirmation', text: 'Your appointment has been successfully rescheduled. You will receive a confirmation email shortly with the new date and time.' }
 ];

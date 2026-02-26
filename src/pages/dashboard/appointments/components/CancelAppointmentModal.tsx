@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface CancelAppointmentModalProps {
   appointment: any;
@@ -26,23 +27,8 @@ export function CancelAppointmentModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-        {/* Header */}
-        <div className="p-6 border-b border-[#E5E7EB]">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-              <i className="ri-error-warning-line text-2xl text-red-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-[#0B1F3B]">Cancel Appointment</h2>
-              <p className="text-sm text-[#6B7280] mt-1">This action cannot be undone</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Content */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title="Cancel Appointment" size="sm">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Appointment Info */}
           <div className="p-4 bg-[#F7FAFC] rounded-xl">
             <div className="flex items-center gap-3 mb-3">
@@ -107,7 +93,6 @@ export function CancelAppointmentModal({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

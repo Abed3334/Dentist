@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
 import {
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell
 } from 'recharts';
@@ -17,7 +16,7 @@ export default function AnalyticsPage() {
   const [serviceFilter, setServiceFilter] = useState('all');
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
@@ -226,6 +225,6 @@ export default function AnalyticsPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface RescheduleModalProps {
   appointment: any;
@@ -71,26 +72,8 @@ export function RescheduleModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-        {/* Header */}
-        <div className="p-6 border-b border-[#E5E7EB]">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-bold text-[#0B1F3B]">Reschedule Appointment</h2>
-              <p className="text-sm text-[#6B7280] mt-1">Choose a new date and time</p>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-[#F7FAFC] rounded-lg transition-colors duration-200 cursor-pointer"
-            >
-              <i className="ri-close-line text-2xl text-[#6B7280]" />
-            </button>
-          </div>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title="Reschedule Appointment" size="sm">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Current Appointment Info */}
           <div className="p-4 bg-[#F7FAFC] rounded-xl">
             <div className="flex items-center gap-3 mb-3">
@@ -172,7 +155,6 @@ export function RescheduleModal({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

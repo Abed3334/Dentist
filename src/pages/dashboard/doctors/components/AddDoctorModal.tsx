@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface AddDoctorModalProps {
   doctor?: any;
@@ -48,35 +49,15 @@ export function AddDoctorModal({ doctor, onClose, onSubmit }: AddDoctorModalProp
     const submitData = {
       ...formData,
       languages: formData.languages.split(',').map(l => l.trim()).filter(Boolean),
-      avatar: formData.avatar || 'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20medical%20doctor%20in%20white%20coat%20with%20stethoscope%2C%20clean%20white%20background%2C%20friendly%20professional%20smile%2C%20modern%20healthcare%20professional%20headshot&width=200&height=200&seq=doctor-default&orientation=squarish'
+      avatar: formData.avatar || 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face'
     };
 
     onSubmit(submitData);
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-[#E5E7EB] p-6 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-[#0B1F3B]">
-              {doctor ? 'Edit Doctor' : 'Add New Doctor'}
-            </h2>
-            <p className="text-sm text-[#6B7280] mt-1">
-              {doctor ? 'Update doctor information' : 'Add a new doctor to your team'}
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-[#F7FAFC] rounded-lg transition-colors duration-200 cursor-pointer"
-          >
-            <i className="ri-close-line text-2xl text-[#6B7280]" />
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title={doctor ? 'Edit Doctor' : 'Add New Doctor'} size="lg">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Basic Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -144,7 +125,7 @@ export function AddDoctorModal({ doctor, onClose, onSubmit }: AddDoctorModalProp
                 type="email"
                 value={formData.email}
                 onChange={e => handleChange('email', e.target.value)}
-                placeholder="doctor@dentest.com"
+                placeholder="doctor@dentist.com"
                 className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-colors duration-200 ${
                   errors.email
                     ? 'border-red-300 focus:border-red-500'
@@ -224,7 +205,6 @@ export function AddDoctorModal({ doctor, onClose, onSubmit }: AddDoctorModalProp
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

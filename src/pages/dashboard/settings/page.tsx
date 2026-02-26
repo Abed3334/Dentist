@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
+import { useToast } from '@/contexts/ToastContext';
 
 const tabs = [
   { id: 'clinic', label: 'Clinic Profile', icon: 'ri-hospital-line' },
@@ -23,25 +22,25 @@ const initialHours = [
 ];
 
 const initialUsers = [
-  { id: 1, name: 'Dr. Admin', email: 'admin@dentest.com', role: 'Admin', status: 'active' },
-  { id: 2, name: 'Dr. Sarah Smith', email: 'sarah.smith@dentest.com', role: 'Doctor', status: 'active' },
-  { id: 3, name: 'Dr. Michael Williams', email: 'michael.williams@dentest.com', role: 'Doctor', status: 'active' },
-  { id: 4, name: 'Maria Lopez', email: 'maria.lopez@dentest.com', role: 'Receptionist', status: 'active' },
-  { id: 5, name: 'Anna White', email: 'anna.white@dentest.com', role: 'Receptionist', status: 'active' },
-  { id: 6, name: 'Dr. Robert Chen', email: 'robert.chen@dentest.com', role: 'Doctor', status: 'inactive' },
+  { id: 1, name: 'Dr. Admin', email: 'admin@dentist.com', role: 'Admin', status: 'active' },
+  { id: 2, name: 'Dr. Sarah Smith', email: 'sarah.smith@dentist.com', role: 'Doctor', status: 'active' },
+  { id: 3, name: 'Dr. Michael Williams', email: 'michael.williams@dentist.com', role: 'Doctor', status: 'active' },
+  { id: 4, name: 'Maria Lopez', email: 'maria.lopez@dentist.com', role: 'Receptionist', status: 'active' },
+  { id: 5, name: 'Anna White', email: 'anna.white@dentist.com', role: 'Receptionist', status: 'active' },
+  { id: 6, name: 'Dr. Robert Chen', email: 'robert.chen@dentist.com', role: 'Doctor', status: 'inactive' },
 ];
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('clinic');
   const [mobileTabOpen, setMobileTabOpen] = useState(false);
-  const [toast, setToast] = useState('');
+  const { showToast } = useToast();
 
   // Clinic Profile
-  const [clinicName, setClinicName] = useState('Dentest Dental Clinic');
+  const [clinicName, setClinicName] = useState('Dentist Dental Clinic');
   const [clinicAddress, setClinicAddress] = useState('123 Medical Center Blvd, Suite 200, New York, NY 10001');
   const [clinicPhone, setClinicPhone] = useState('+1 (555) 000-1234');
-  const [clinicEmail, setClinicEmail] = useState('info@dentest.com');
-  const [clinicWebsite, setClinicWebsite] = useState('https://dentest.com');
+  const [clinicEmail, setClinicEmail] = useState('info@dentist.com');
+  const [clinicWebsite, setClinicWebsite] = useState('https://dentist.com');
 
   // Working Hours
   const [workingHours, setWorkingHours] = useState(initialHours);
@@ -65,11 +64,6 @@ export default function SettingsPage() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
-  };
 
   const handleSaveClinic = () => showToast('Clinic profile saved');
   const handleSaveHours = () => showToast('Working hours saved');
@@ -110,15 +104,8 @@ export default function SettingsPage() {
   const activeTabLabel = tabs.find(t => t.id === activeTab)?.label || '';
 
   return (
-    <DashboardLayout>
+    <>
       <div className="p-4 sm:p-6 lg:p-8">
-        {/* Toast */}
-        {toast && (
-          <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#0B1F3B] text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-lg">
-            <i className="ri-check-line mr-2"></i>{toast}
-          </div>
-        )}
-
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-[#0B1F3B]">Settings</h1>
           <p className="text-sm text-[#6B7280]">Manage your clinic preferences and configuration</p>
@@ -503,6 +490,6 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

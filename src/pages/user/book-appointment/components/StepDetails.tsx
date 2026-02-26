@@ -47,17 +47,17 @@ export default function StepDetails({
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">
+      <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">
         Patient Information
       </h2>
-      <p className="text-[#6B7280] mb-8">
+      <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">
         Please provide your details to complete booking
       </p>
 
-      <div className="max-w-lg mx-auto space-y-5">
+      <div className="max-w-lg mx-auto space-y-4 sm:space-y-5">
         {/* Name */}
         <div>
-          <label className="block text-sm font-medium text-[#111827] mb-1.5">
+          <label htmlFor="book-name" className="block text-sm font-medium text-[#111827] mb-1.5">
             Full Name <span className="text-[#0F766E]">*</span>
           </label>
           <div className="relative">
@@ -65,12 +65,14 @@ export default function StepDetails({
               <i className="ri-user-line text-[#6B7280]" />
             </div>
             <input
+              id="book-name"
               type="text"
               name="name"
+              autoComplete="name"
               value={safeDetails.name}
               onChange={(e) => handleChange('name', e.target.value)}
               placeholder="Enter your full name"
-              className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl text-sm focus:outline-none transition-colors duration-200 ${
+              className={`w-full pl-10 pr-4 py-3.5 sm:py-3 min-h-[48px] border-2 rounded-xl text-base sm:text-sm focus:outline-none transition-colors duration-200 ${
                 errors.name
                   ? 'border-red-400 focus:border-red-500'
                   : 'border-[#E5E7EB] focus:border-[#0F766E]'
@@ -86,7 +88,7 @@ export default function StepDetails({
 
         {/* Phone */}
         <div>
-          <label className="block text-sm font-medium text-[#111827] mb-1.5">
+          <label htmlFor="book-phone" className="block text-sm font-medium text-[#111827] mb-1.5">
             Phone Number <span className="text-[#0F766E]">*</span>
           </label>
           <div className="relative">
@@ -94,12 +96,15 @@ export default function StepDetails({
               <i className="ri-phone-line text-[#6B7280]" />
             </div>
             <input
+              id="book-phone"
               type="tel"
               name="phone"
+              autoComplete="tel"
+              inputMode="tel"
               value={safeDetails.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
               placeholder="+1 (555) 123-4567"
-              className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl text-sm focus:outline-none transition-colors duration-200 ${
+              className={`w-full pl-10 pr-4 py-3.5 sm:py-3 min-h-[48px] border-2 rounded-xl text-base sm:text-sm focus:outline-none transition-colors duration-200 ${
                 errors.phone
                   ? 'border-red-400 focus:border-red-500'
                   : 'border-[#E5E7EB] focus:border-[#0F766E]'
@@ -115,7 +120,7 @@ export default function StepDetails({
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-medium text-[#111827] mb-1.5">
+          <label htmlFor="book-email" className="block text-sm font-medium text-[#111827] mb-1.5">
             Email Address <span className="text-[#0F766E]">*</span>
           </label>
           <div className="relative">
@@ -123,12 +128,15 @@ export default function StepDetails({
               <i className="ri-mail-line text-[#6B7280]" />
             </div>
             <input
+              id="book-email"
               type="email"
               name="email"
+              autoComplete="email"
+              inputMode="email"
               value={safeDetails.email}
               onChange={(e) => handleChange('email', e.target.value)}
               placeholder="you@example.com"
-              className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl text-sm focus:outline-none transition-colors duration-200 ${
+              className={`w-full pl-10 pr-4 py-3.5 sm:py-3 min-h-[48px] border-2 rounded-xl text-base sm:text-sm focus:outline-none transition-colors duration-200 ${
                 errors.email
                   ? 'border-red-400 focus:border-red-500'
                   : 'border-[#E5E7EB] focus:border-[#0F766E]'
@@ -144,14 +152,14 @@ export default function StepDetails({
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-medium text-[#111827] mb-1.5">
+          <label htmlFor="book-notes" className="block text-sm font-medium text-[#111827] mb-1.5">
             Additional Notes
           </label>
           <textarea
+            id="book-notes"
             name="notes"
             value={safeDetails.notes}
             onChange={(e) => {
-              // Enforce max length both via UI and logic safety.
               const newVal = e.target.value;
               if (newVal.length <= 500) {
                 handleChange('notes', newVal);
@@ -160,7 +168,7 @@ export default function StepDetails({
             placeholder="Any specific concerns or requirements?"
             rows={4}
             maxLength={500}
-            className="w-full px-4 py-3 border-2 border-[#E5E7EB] rounded-xl text-sm focus:outline-none focus:border-[#0F766E] transition-colors duration-200 resize-none"
+            className="w-full px-4 py-3.5 sm:py-3 border-2 border-[#E5E7EB] rounded-xl text-base sm:text-sm focus:outline-none focus:border-[#0F766E] transition-colors duration-200 resize-none min-h-[100px]"
           />
           <p className="text-right text-xs text-[#6B7280] mt-1">
             {safeDetails.notes.length}/500

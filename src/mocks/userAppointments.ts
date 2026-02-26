@@ -4,8 +4,7 @@ export const userUpcomingAppointments = [
     id: 'APT-2025-001',
     service: 'Professional Teeth Whitening',
     doctor: 'Dr. Emily Brown',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20cosmetic%20dentist%20in%20white%20medical%20coat%2C%20clean%20white%20background%2C%20warm%20professional%20smile%2C%20modern%20healthcare%20doctor%20headshot&width=200&height=200&seq=doctor-3&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&h=200&fit=crop&crop=face',
     specialty: 'Cosmetic Dentistry',
     date: '2025-02-10',
     time: '10:00 AM',
@@ -19,8 +18,7 @@ export const userUpcomingAppointments = [
     id: 'APT-2025-002',
     service: 'Braces Adjustment',
     doctor: 'Dr. Michael Williams',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20male%20orthodontist%20in%20white%20medical%20coat%2C%20clean%20white%20background%2C%20friendly%20professional%20smile%2C%20modern%20healthcare%20doctor%20headshot&width=200&height=200&seq=doctor-2&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face',
     specialty: 'Orthodontics',
     date: '2025-02-18',
     time: '02:00 PM',
@@ -34,8 +32,7 @@ export const userUpcomingAppointments = [
     id: 'APT-2025-003',
     service: 'Regular Teeth Cleaning',
     doctor: 'Dr. Sarah Smith',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20dentist%20in%20white%20medical%20coat%20with%20stethoscope%2C%20clean%20white%20background%2C%20friendly%20smile%2C%20modern%20healthcare%20professional%20headshot&width=200&height=200&seq=doctor-1&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face',
     specialty: 'General Dentistry',
     date: '2025-03-05',
     time: '09:00 AM',
@@ -52,8 +49,7 @@ export const userPastAppointments = [
     id: 'APT-2024-045',
     service: 'Initial Consultation',
     doctor: 'Dr. Sarah Smith',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20dentist%20in%20white%20medical%20coat%20with%20stethoscope%2C%20clean%20white%20background%20%2C%20friendly%20smile%2C%20modern%20healthcare%20professional%20headshot&width=200&height=200&seq=doctor-1&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face',
     specialty: 'General Dentistry',
     date: '2025-01-05',
     time: '11:00 AM',
@@ -68,8 +64,7 @@ export const userPastAppointments = [
     id: 'APT-2024-038',
     service: 'Cavity Filling',
     doctor: 'Dr. Emily Brown',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20cosmetic%20dentist%20in%20white%20medical%20coat%2C%20clean%20white%20background%2C%20warm%20professional%20smile%2C%20modern%20healthcare%20doctor%20headshot&width=200&height=200&seq=doctor-3&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&h=200&fit=crop&crop=face',
     specialty: 'Cosmetic Dentistry',
     date: '2024-12-18',
     time: '03:00 PM',
@@ -84,8 +79,7 @@ export const userPastAppointments = [
     id: 'APT-2024-030',
     service: 'Regular Teeth Cleaning',
     doctor: 'Dr. Sarah Smith',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20dentist%20in%20white%20medical%20coat%20with%20stethoscope%2C%20clean%20white%20background%2C%20friendly%20smile%2C%20modern%20healthcare%20professional%20headshot&width=200&height=200&seq=doctor-1&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face',
     specialty: 'General Dentistry',
     date: '2024-11-20',
     time: '10:00 AM',
@@ -100,8 +94,7 @@ export const userPastAppointments = [
     id: 'APT-2024-022',
     service: 'Emergency Consultation',
     doctor: 'Dr. James Johnson',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20male%20oral%20surgeon%20in%20white%20medical%20coat%2C%20clean%20white%20background%2C%20professional%20demeanor%2C%20modern%20healthcare%20doctor%20headshot&width=200&height=200&seq=doctor-4&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1622253692010-333f92daa543?w=200&h=200&fit=crop&crop=face',
     specialty: 'Oral Surgery',
     date: '2024-10-08',
     time: '04:00 PM',
@@ -116,8 +109,7 @@ export const userPastAppointments = [
     id: 'APT-2024-015',
     service: 'Deep Cleaning',
     doctor: 'Dr. Sarah Smith',
-    doctorAvatar:
-      'https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20confident%20female%20dentist%20in%20white%20medical%20coat%20with%20stethoscope%2C%20clean%20white%20background%2C%20friendly%20smile%2C%20modern%20healthcare%20professional%20headshot&width=200&height=200&seq=doctor-1&orientation=squarish',
+    doctorAvatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face',
     specialty: 'General Dentistry',
     date: '2024-09-12',
     time: '09:00 AM',

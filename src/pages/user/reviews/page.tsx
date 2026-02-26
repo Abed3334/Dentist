@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
-import UserLayout from '../components/UserLayout';
+import UserLayout from '@/layouts/UserLayout';
+import { useToast } from '@/contexts/ToastContext';
 import { userReviews, userPastAppointments } from '../../../mocks/userAppointments';
 
 export default function ReviewsPage() {
@@ -9,13 +9,7 @@ export default function ReviewsPage() {
   const [selectedAppointment, setSelectedAppointment] = useState('');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
-  const [toast, setToast] = useState('');
-
-  // Show a temporary toast message
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(''), 3000);
-  };
+  const { showToast } = useToast();
 
   // Appointments that are completed but not yet reviewed
   const unreviewedAppointments = userPastAppointments.filter(
@@ -52,15 +46,16 @@ export default function ReviewsPage() {
   return (
     <UserLayout>
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-[#0B1F3B]">My Reviews</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-[#0B1F3B]">My Reviews</h1>
             <p className="text-sm text-[#6B7280] mt-1">View and manage your reviews</p>
           </div>
           {unreviewedAppointments.length > 0 && (
             <button
+              type="button"
               onClick={() => setNewReviewModal(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0F766E] text-white rounded-xl text-sm font-medium hover:bg-[#0B5B54] transition-all duration-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[48px] bg-[#0F766E] text-white rounded-xl text-sm font-medium hover:bg-[#0B5B54] transition-all duration-200 cursor-pointer whitespace-nowrap w-full sm:w-auto"
             >
               <i className="ri-star-line"></i>
               Write Review
@@ -294,12 +289,6 @@ export default function ReviewsPage() {
       )}
 
       {/* Toast */}
-      {toast && (
-        <div className="fixed bottom-6 right-6 bg-[#0B1F3B] text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm animate-slide-up z-50">
-          <i className="ri-check-double-line text-[#A7F3D0]"></i>
-          {toast}
-        </div>
-      )}
     </UserLayout>
   );
 }

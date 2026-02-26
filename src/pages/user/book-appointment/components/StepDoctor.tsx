@@ -33,21 +33,22 @@ export default function StepDoctor({
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#0B1F3B] mb-2">
+      <h2 className="text-xl sm:text-2xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">
         Choose Your Doctor
       </h2>
-      <p className="text-[#6B7280] mb-8">
+      <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">
         Select from our experienced dental professionals
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {activeDoctors.map((doctor) => (
           <button
+            type="button"
             key={doctor.id}
             onClick={() => onSelect(doctor.id)}
-            className={`text-left p-5 rounded-xl border-2 transition-all duration-200 cursor-pointer hover:shadow-md flex gap-4 ${
+            className={`text-left p-4 sm:p-5 rounded-xl border-2 transition-all duration-200 cursor-pointer hover:shadow-md active:scale-[0.99] flex gap-3 sm:gap-4 min-h-[100px] sm:min-h-0 ${
               selectedDoctor === doctor.id
-                ? 'border-[#0F766E] bg-[#F0FDF9] shadow-md'
+                ? 'border-[#0F766E] bg-[#F0FDF9] shadow-md ring-2 ring-[#0F766E]/20'
                 : 'border-[#E5E7EB] bg-white hover:border-[#A7F3D0]'
             }`}
           >
@@ -55,7 +56,7 @@ export default function StepDoctor({
               <img
                 src={doctor.avatar}
                 alt={doctor.name}
-                className="w-20 h-20 rounded-xl object-cover"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover"
               />
               {selectedDoctor === doctor.id && (
                 <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#0F766E] flex items-center justify-center">

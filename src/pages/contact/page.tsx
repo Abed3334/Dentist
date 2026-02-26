@@ -1,5 +1,3 @@
-
-import { Link } from 'react-router-dom';
 import ContactHero from './components/ContactHero';
 import ContactForm from './components/ContactForm';
 import ClinicInfoCard from './components/ClinicInfoCard';
@@ -7,48 +5,11 @@ import ClinicInfoCard from './components/ClinicInfoCard';
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#F7FAFC]">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
-        <div className="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 cursor-pointer">
-            <img
-              src="https://public.readdy.ai/ai/img_res/36c4f334-3c41-4aab-914a-d6196bb4adcf.png"
-              alt="Dentest Logo"
-              className="h-10 w-10 object-contain"
-            />
-            <span className="text-2xl font-bold text-[#0B1F3B]">Dentest</span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-10">
-            <Link to="/#services" className="text-[#6B7280] hover:text-[#0F766E] transition-colors duration-200 font-medium cursor-pointer">Services</Link>
-            <Link to="/#about" className="text-[#6B7280] hover:text-[#0F766E] transition-colors duration-200 font-medium cursor-pointer">About</Link>
-            <Link to="/#testimonials" className="text-[#6B7280] hover:text-[#0F766E] transition-colors duration-200 font-medium cursor-pointer">Testimonials</Link>
-            <Link to="/contact" className="text-[#0F766E] font-medium cursor-pointer">Contact</Link>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link
-              to="/login"
-              className="px-6 py-3 border-2 border-[#0F766E] text-[#0F766E] rounded-full font-medium hover:bg-[#0F766E] hover:text-white transition-all duration-200 whitespace-nowrap cursor-pointer"
-            >
-              Login
-            </Link>
-            <Link
-              to="/book-appointment"
-              className="px-6 py-3 bg-[#0F766E] text-white rounded-full font-medium hover:bg-[#0B5B54] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap cursor-pointer"
-            >
-              Book Appointment
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
       <ContactHero />
 
       {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-[1200px] mx-auto px-6">
+      <section className="py-10 sm:py-16">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row gap-10">
             {/* Left – Form */}
             <div className="w-full lg:w-[58%]">
@@ -103,19 +64,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#0B1F3B] py-10">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            
-            <span className="text-white font-bold">Dentest</span>
-          </div>
-          <p className="text-white/60 text-sm">&copy; 2025 Dentest. All rights reserved.</p>
-       
-          
-        </div>
-      </footer>
     </div>
   );
 }

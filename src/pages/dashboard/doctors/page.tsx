@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
+import { useToast } from '@/contexts/ToastContext';
 import { DoctorCard } from './components/DoctorCard';
 import { AddDoctorModal } from './components/AddDoctorModal';
 import { ManageAvailabilityModal } from './components/ManageAvailabilityModal';
@@ -15,7 +15,7 @@ export default function DoctorsPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const [editingDoctor, setEditingDoctor] = useState<any>(null);
-  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const { showToast } = useToast();
 
   const handleAddDoctor = (data: any) => {
     const newDoctor = {
@@ -70,26 +70,22 @@ export default function DoctorsPage() {
     showToast('Availability updated successfully', 'success');
   };
 
-  const showToast = (message: string, type: 'success' | 'error') => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
-  };
-
   return (
-    <DashboardLayout>
-      <div className="p-8">
+    <>
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-[#0B1F3B] mb-2">Doctors</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-navy mb-2">Doctors</h1>
             <p className="text-[#6B7280]">Manage your medical staff and their schedules</p>
           </div>
           <button
+            type="button"
             onClick={() => {
               setEditingDoctor(null);
               setShowAddModal(true);
             }}
-            className="flex items-center gap-2 px-6 py-3 bg-[#0F766E] text-white rounded-xl hover:bg-[#0B5B54] transition-all duration-200 whitespace-nowrap cursor-pointer"
+            className="flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-primary text-white rounded-xl hover:bg-primary-dark transition-all duration-200 whitespace-nowrap cursor-pointer w-full sm:w-auto min-h-[44px]"
           >
             <i className="ri-user-add-line text-xl" />
             <span className="font-medium">Add Doctor</span>
@@ -186,22 +182,6 @@ export default function DoctorsPage() {
       )}
 
       {/* Toast */}
-      {toast && (
-        <div className="fixed bottom-8 right-8 z-50 animate-slide-up">
-          <div
-            className={`px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 ${
-              toast.type === 'success' ? 'bg-[#0F766E] text-white' : 'bg-red-500 text-white'
-            }`}
-          >
-            <i
-              className={`${
-                toast.type === 'success' ? 'ri-check-line' : 'ri-error-warning-line'
-              } text-2xl`}
-            />
-            <span className="font-medium">{toast.message}</span>
-          </div>
-        </div>
-      )}
-    </DashboardLayout>
+    </>
   );
 }

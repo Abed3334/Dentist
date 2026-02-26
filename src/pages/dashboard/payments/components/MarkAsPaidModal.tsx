@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface MarkAsPaidModalProps {
   payment: any;
@@ -15,23 +16,9 @@ export function MarkAsPaidModal({ payment, onClose, onConfirm }: MarkAsPaidModal
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-        {/* Header */}
-        <div className="p-6 border-b border-[#E5E7EB]">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-              <i className="ri-check-line text-2xl text-green-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-[#0B1F3B]">Mark as Paid</h2>
-              <p className="text-sm text-[#6B7280] mt-1">Record payment for this invoice</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title="Mark as Paid" size="sm">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <p className="text-sm text-muted -mt-2">Record payment for this invoice</p>
           {/* Payment Info */}
           <div className="p-4 bg-[#F7FAFC] rounded-xl">
             <div className="flex items-center justify-between mb-2">
@@ -104,7 +91,6 @@ export function MarkAsPaidModal({ payment, onClose, onConfirm }: MarkAsPaidModal
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }

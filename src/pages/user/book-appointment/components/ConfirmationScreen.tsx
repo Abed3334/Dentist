@@ -29,17 +29,17 @@ export default function ConfirmationScreen({
   };
 
   return (
-    <div className="text-center py-8">
+    <div className="text-center py-6 sm:py-8">
       {/* Success Icon */}
-      <div className="w-20 h-20 rounded-full bg-[#A7F3D0] flex items-center justify-center mx-auto mb-6 animate-bounce">
-        <i className="ri-check-line text-4xl text-[#0F766E]"></i>
+      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#A7F3D0] flex items-center justify-center mx-auto mb-5 sm:mb-6">
+        <i className="ri-check-line text-3xl sm:text-4xl text-[#0F766E]"></i>
       </div>
 
-      <h2 className="text-3xl font-bold text-[#0B1F3B] mb-2">Appointment Confirmed!</h2>
-      <p className="text-[#6B7280] mb-8">Your booking has been successfully scheduled</p>
+      <h2 className="text-2xl sm:text-3xl font-bold text-[#0B1F3B] mb-1.5 sm:mb-2">Appointment Confirmed!</h2>
+      <p className="text-sm sm:text-base text-[#6B7280] mb-6 sm:mb-8">Your booking has been successfully scheduled</p>
 
       {/* Booking Details */}
-      <div className="max-w-md mx-auto bg-[#F0FDF9] rounded-2xl p-6 mb-8 text-left">
+      <div className="max-w-md mx-auto bg-[#F0FDF9] rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 text-left">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-[#0F766E]/10 flex items-center justify-center flex-shrink-0">
@@ -101,22 +101,22 @@ export default function ConfirmationScreen({
       <div className="max-w-md mx-auto space-y-3">
         <Link
           to="/my-appointments"
-          className="block w-full py-3.5 bg-[#0F766E] text-white rounded-xl font-medium hover:bg-[#0B5B54] transition-all duration-200 cursor-pointer text-center whitespace-nowrap"
+          className="block w-full min-h-[52px] sm:min-h-[48px] py-3.5 bg-[#0F766E] text-white rounded-xl font-medium hover:bg-[#0B5B54] active:bg-[#0A534C] transition-all duration-200 cursor-pointer text-center whitespace-nowrap flex items-center justify-center"
         >
           View My Appointments
         </Link>
         <button
+          type="button"
           onClick={() => {
-            // Mock add to calendar – can be expanded with proper calendar integration
             try {
               console.log('Add to calendar clicked');
             } catch (err) {
               console.error('Failed to add to calendar:', err);
             }
           }}
-          className="block w-full py-3.5 border-2 border-[#0F766E] text-[#0F766E] rounded-xl font-medium hover:bg-[#F0FDF9] transition-all duration-200 cursor-pointer whitespace-nowrap"
+          className="block w-full min-h-[52px] sm:min-h-[48px] py-3.5 border-2 border-[#0F766E] text-[#0F766E] rounded-xl font-medium hover:bg-[#F0FDF9] active:bg-[#E6F9F5] transition-all duration-200 cursor-pointer whitespace-nowrap flex items-center justify-center gap-2"
         >
-          <i className="ri-calendar-event-line mr-2"></i>
+          <i className="ri-calendar-event-line"></i>
           Add to Calendar
         </button>
       </div>

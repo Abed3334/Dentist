@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LOGO_SRC } from '@/constants/assets';
 
 export default function RegisterPage() {
   const [step, setStep] = useState(1);
@@ -47,12 +48,12 @@ export default function RegisterPage() {
           <div className="max-w-md text-center">
             <div className="mb-8">
               <img 
-                src="https://readdy.ai/api/search-image?query=Welcoming%20modern%20dental%20clinic%20reception%20area%20with%20friendly%20staff%2C%20bright%20clean%20medical%20environment%20with%20teal%20and%20mint%20color%20accents%2C%20contemporary%20healthcare%20interior%20design%2C%20professional%20medical%20setting%2C%20warm%20inviting%20atmosphere%2C%20natural%20lighting&width=800&height=800&seq=register-illustration&orientation=squarish" 
-                alt="Join Dentest" 
+                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=800&fit=crop" 
+                alt="Join Dentist" 
                 className="w-full h-auto rounded-3xl shadow-2xl"
               />
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">Join Dentest Today</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Join Dentist Today</h2>
             <p className="text-xl text-white/90 leading-relaxed">
               Start your journey to a healthier smile with our expert dental care team.
             </p>
@@ -72,16 +73,16 @@ export default function RegisterPage() {
       </div>
 
       {/* Right Side - Registration Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-[#F7FAFC]">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-[#F7FAFC] min-h-screen">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-3xl shadow-xl p-10">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 lg:p-10">
             <div className="flex items-center gap-2 mb-8">
               <img 
-                src="https://public.readdy.ai/ai/img_res/36c4f334-3c41-4aab-914a-d6196bb4adcf.png" 
-                alt="Dentest Logo" 
+                src={LOGO_SRC} 
+                alt="Dentist Logo" 
                 className="h-10 w-10 object-contain"
               />
-              <span className="text-2xl font-bold text-[#0B1F3B]">Dentest</span>
+              <span className="text-2xl font-bold text-[#0B1F3B]">Dentist</span>
             </div>
 
             <div className="mb-8">

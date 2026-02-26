@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Modal } from '@/components/ui/Modal';
 
 interface IssueRefundModalProps {
   payment: any;
@@ -31,23 +32,9 @@ export function IssueRefundModal({ payment, onClose, onConfirm }: IssueRefundMod
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-        {/* Header */}
-        <div className="p-6 border-b border-[#E5E7EB]">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-              <i className="ri-refund-line text-2xl text-red-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-[#0B1F3B]">Issue Refund</h2>
-              <p className="text-sm text-[#6B7280] mt-1">Process a refund for this payment</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+    <Modal open onClose={onClose} title="Issue Refund" size="sm">
+      <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <p className="text-sm text-muted -mt-2">Process a refund for this payment</p>
           {/* Payment Info */}
           <div className="p-4 bg-[#F7FAFC] rounded-xl">
             <div className="flex items-center justify-between mb-2">
@@ -146,7 +133,6 @@ export function IssueRefundModal({ payment, onClose, onConfirm }: IssueRefundMod
             </button>
           </div>
         </form>
-      </div>
-    </div>
+    </Modal>
   );
 }
